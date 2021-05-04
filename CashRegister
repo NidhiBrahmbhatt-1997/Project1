@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace cashDispenser
+{
+    class CashRegister
+    {
+        
+        public static int dollar, cents;
+        public static double _cost,_cashGiven;
+        public static double _change;
+        public CashRegister(double cost,double cashGiven)
+        {
+            
+            _cost = cost;
+            _cashGiven = cashGiven;
+            _change = System.Math.Round(_cashGiven - _cost,2);
+            dollar = (int)_change;
+            cents = (int)System.Math.Round((_change-dollar) * 100);            
+        }
+
+        public static void dispense()
+        {
+            Console.WriteLine("Cost of item: {0} ",_cost);
+            Console.WriteLine("Amount given: {0}",_cashGiven);
+            Console.WriteLine("Change: {0}",_change);
+            
+            dispense100();
+            dispense50();
+            dispense20();
+            dispense10();
+            dispense5();
+            dispense1();
+            dispenseQuarter();
+            dispenseDime();
+            dispenseNickle();
+            dispensePenny();
+        }
+
+
+        private static void dispense100()
+        {          
+            int h100 = dollar / 100;
+            if (h100>0)
+            {
+                Console.WriteLine("# of 100 $ bills: {0}", h100);
+                dollar = dollar % 100;                
+            }
+
+        }
+        private static void dispense50()
+        {
+            int h50 = dollar / 50;
+            if (h50 > 0)
+            {
+                Console.WriteLine("# of 50 $ bills: {0}", h50);
+                dollar = dollar % 50;
+            }
+        }
+        private static void dispense20()
+        {
+            int h20 = dollar / 20;
+            if (h20 > 0)
+            {
+                Console.WriteLine("# of 20 $ bills: {0}", h20);
+                dollar = dollar % 20;
+            }
+        }
+        private static void dispense10()
+        {
+            int h10 = dollar / 10;
+            if (h10 > 0)
+            {
+                Console.WriteLine("# of 10 $ bills: {0}", h10);
+                dollar = dollar % 10;
+            }
+        }
+        private static void dispense5()
+        {
+            int h5 = dollar / 5;
+            if (h5 > 0)
+            {
+                Console.WriteLine("# of 5 $ bills: {0}", h5);
+                dollar = dollar % 5;
+            }
+        }
+        private static void dispense1()
+        {
+            int h1 = dollar ;
+            if (h1 > 0)
+            {
+                Console.WriteLine("# of 1 $ bills: {0}", h1);
+            }
+        }
+        private static void dispenseQuarter()
+        {
+            int h25 = cents / 25;
+            if (h25 > 0)
+            {
+                Console.WriteLine("# of quarter(s): {0}", h25);
+                cents = cents % 25;
+            }
+        }
+        private static void dispenseDime()
+        {
+            int h10 = cents / 10;
+            if (h10 > 0)
+            {
+                Console.WriteLine("# of dimes(s): {0}", h10);
+                cents = cents % 10;
+            }
+        }
+        private static void dispenseNickle()
+        {
+            int h5 = cents / 5;
+            if (h5 > 0)
+            {
+                Console.WriteLine("# of nickle(s): {0}", h5);
+                cents = cents % 5;
+            }
+        }
+
+        private static void dispensePenny()
+        {
+            int h1 = cents ;
+            if (h1 > 0)
+            {
+                Console.WriteLine("# of cent(s): {0}", h1);
+            }
+        }
+
+
+
+    }
+}
